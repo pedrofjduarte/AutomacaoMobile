@@ -27,7 +27,7 @@ public class CalculadoraTest {
         clickId("op_mul");
         clickId("digit_9");
         clickId("eq");
-        String resultado = driverFactory.getDriver().findElement(MobileBy.id("result")).getText();
+        String resultado = resultadoRetornado();
         assertEquals("63", resultado);
     }
 
@@ -37,7 +37,7 @@ public class CalculadoraTest {
         clickId("op_add");
         clickId("digit_9");
         clickId("eq");
-        String resultado = driverFactory.getDriver().findElement(MobileBy.id("result")).getText();
+        String resultado = resultadoRetornado();
         assertEquals("16", resultado);
     }
 
@@ -47,12 +47,16 @@ public class CalculadoraTest {
         clickId("op_div");
         clickId("digit_9");
         clickId("eq");
-        String resultado = driverFactory.getDriver().findElement(MobileBy.id("result")).getText();
+        String resultado = resultadoRetornado();
         assertEquals("0.7777777777777", resultado);
     }
 
     public void clickId(String id){
         driverFactory.getDriver().findElement(MobileBy.id(id)).click();
+    }
+
+    public String resultadoRetornado(){
+        return driverFactory.getDriver().findElement(MobileBy.id("result")).getText();
     }
 
     @AfterEach
